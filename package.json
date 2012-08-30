@@ -1,0 +1,27 @@
+{
+    "name":"node-sina-weibo",
+    "description":"Sina Weibo API client for node.js",
+    "version":"0.0.1",
+    "author":"Sam X. Xu <samxxu@gmail.com>",
+    "main":"./index",
+    "keywords":[
+        "sina weibo",
+        "oauth"
+    ],
+    "repository":{
+        "type":"git",
+        "url":"https://github.com/samxxu/node-sina-weibo.git"
+    },
+    "licenses":[
+        {
+            "type":"MIT",
+            "url":"http://www.opensource.org/licenses/mit-license.php"
+        }
+    ],
+    "dependencies":{
+        "oauth":"0.9.8"
+    },
+    "engines":{
+        "node":"*"
+    }
+}

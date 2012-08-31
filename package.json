@@ -18,8 +18,13 @@
             "url":"http://www.opensource.org/licenses/mit-license.php"
         }
     ],
+    "devDependencies":{
+        "mocha":">=0.7.0",
+        "should":">=0.4.2"
+    },
     "dependencies":{
-        "oauth":"0.9.8"
+        "oauth":"0.9.8",
+        "multipart":"0.1.5"
     },
     "engines":{
         "node":"*"

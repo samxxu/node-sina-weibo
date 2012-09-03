@@ -2,7 +2,7 @@
     "name":"node-sina-weibo",
     "description":"Sina Weibo API client for node.js",
     "version":"0.0.1",
-    "author":"Sam X. Xu <samxxu@gmail.com>",
+    "author":"Sam X. Xu <samxxu@gmail.com> Weibo:@VM-SAM",
     "main":"./index",
     "keywords":[
         "sina weibo",
@@ -24,7 +24,7 @@
     },
     "dependencies":{
         "oauth":"0.9.8",
-        "multipart":"0.1.5"
+        "form-data":"0.0.3"
     },
     "engines":{
         "node":"*"

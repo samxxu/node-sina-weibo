@@ -1,6 +1,10 @@
 var OAuth2 = require('oauth').OAuth2,
     querystring = require('querystring'),
+    fs = require('fs'),
+    FormData = require('form-data'),
     API_BASE_URL = 'https://api.weibo.com/';
+
+//API_BASE_URL = 'http://127.0.0.1:8099/';
 
 var SinaWeibo = module.exports = function (clientId, clientSecret, accessToken) {
     this._clientId = clientId;
@@ -17,7 +21,6 @@ SinaWeibo.prototype.getAccessToken = function (code, params, callback) {
     this.oAuth.getOAuthAccessToken(code, params, callback);
 };
 
-
 function makeASinaWeiboResponseHandler(cb) {
     var handler = function (err, data, response) {
         if (err) return cb(err);
@@ -25,8 +28,7 @@ function makeASinaWeiboResponseHandler(cb) {
         var results;
         try {
             results = JSON.parse(data);
-        }
-        catch (e) {
+        } catch (e) {
             results = querystring.parse(data);
         }
         cb(null, response, results);
@@ -52,6 +54,7 @@ SinaWeibo.prototype._makeHeaders = function (headers) {
 
 SinaWeibo.prototype._GET = function (url, params, cb) {
     var headers = this._makeHeaders();
+    params = params || {};
     var data = querystring.stringify(params);
     console.log('querystring:' + data);
 
@@ -59,21 +62,58 @@ SinaWeibo.prototype._GET = function (url, params, cb) {
 };
 
 SinaWeibo.prototype._POST = function (url, params, cb) {
-    var params = params || {};
-    params['access_token'] = this._accessToken;  // TODO test this
+    params = params || {};
+    params['access_token'] = this._accessToken;
 
     var data = querystring.stringify(params);
     var headers = this._makeHeaders({
         'Content-Type':'application/x-www-form-urlencoded'
     });
 
-    this._request("POST", url, headers, data, this._accessToken, makeASinaWeiboResponseHandler(cb));
+    this.oAuth._request("POST", url, headers, data, this._accessToken, makeASinaWeiboResponseHandler(cb));
 }
 
 SinaWeibo.prototype._DELETE = function (url, params, cb) {
 
 }
 
+SinaWeibo.prototype.statuses$upload = function (params, cb) {
+    if (!(params && params.pic)) {
+        throw new Error('Invalid upload parameters');
+    }
+
+    var pic = params.pic;
+    delete params.pic;
+
+    var url = API_BASE_URL + '2/statuses/upload.json';
+
+    var form = new FormData();
+    form.append('access_token', this._accessToken);
+
+    Object.keys(params).forEach(function (key) {
+        form.append(key, params[key]);
+    });
+
+    form.append('pic', fs.createReadStream(pic));
+
+    var responseHandler = makeASinaWeiboResponseHandler(cb);
+    form.submit(url, function (err, response) {
+        if (err)return cb(err);
+
+        var data = '';
+        response.on("data", function (chunk) {
+            data += chunk
+        });
+
+        response.on("close", function (err) {
+            if (err)return cb(err);
+        });
+        response.addListener("end", function () {
+            responseHandler(null, data, response);
+        });
+
+    });
+}
 
 SinaWeibo.resources = [
     {
@@ -94,3 +134,4 @@ SinaWeibo.resources.forEach(function (resource) {
         this['_' + resource.method](API_BASE_URL + resource.url, params, cb);
     }
 });
+

@@ -1,5 +1,5 @@
 var should = require('should'),
-    SinaWeibo = require('..');
+    SinaWeibo = require('../lib');
 
 describe("Class SinaWeibo", function () {
 
@@ -19,7 +19,7 @@ describe("Class SinaWeibo", function () {
                 redirect_uri:'http://runmyjs.com/callback',
                 response_type:'code'
             });
-            console.log('url>>' + url);
+            console.log('url : ' + url);
             url.length.should.be.above(10);
             done();
         });
@@ -27,22 +27,21 @@ describe("Class SinaWeibo", function () {
 
     describe('#getAccessToken()', function () {
         it('should return a valid AccessToken', function (done) {
-            var url = weibo.getAccessToken('dc70297a9bfab4f20ba54e914bd7a951', {
-                        grant_type:'authorization_code',
-                        redirect_uri:'http://runmyjs.com/callback'
-                    }, function (err, accessToken, refreshToken, results) {
-                        if (err) {
-                            console.error(err);
-                            return done(err);
-                        }
-                        console.log('accessToken:' + accessToken);
-                        console.log('refreshToken:' + refreshToken);
-//                console.log(require('util').inspect(results));
-                        accessToken.length.should.be.above(10);
-                        done();
+            weibo.getAccessToken({
+                    code:'0545ba57f273f97730a244796ba05ad5',
+                    grant_type:'authorization_code',
+                    redirect_uri:'http://runmyjs.com/callback'
+                }, function (err, accessToken, refreshToken, results) {
+                    if (err) {
+                        console.error(err);
+                        return done(err);
                     }
-                )
-                ;
+                    console.log('accessToken:' + accessToken);
+                    console.log('refreshToken:' + refreshToken);
+                    accessToken.length.should.be.above(10);
+                    done();
+                }
+            );
         });
     });
 

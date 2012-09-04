@@ -3,7 +3,7 @@
     "description":"Sina Weibo API client for node.js",
     "version":"0.0.1",
     "author":"Sam X. Xu <samxxu@gmail.com> Weibo:@VM-SAM",
-    "main":"./index",
+    "main":"./lib/index",
     "keywords":[
         "sina weibo",
         "oauth"

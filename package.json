@@ -6,6 +6,7 @@
     "main":"./lib/index",
     "keywords":[
         "sina weibo",
+        "weibo",
         "oauth2"
     ],
     "repository":{

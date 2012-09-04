@@ -6,7 +6,7 @@
     "main":"./lib/index",
     "keywords":[
         "sina weibo",
-        "oauth"
+        "oauth2"
     ],
     "repository":{
         "type":"git",

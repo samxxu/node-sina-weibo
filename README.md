@@ -20,9 +20,9 @@ If you want some more graceful and comfortable APIs, like: weibo.getUserDetail()
 
     var weibo = new SinaWeibo(clientId, clientSecret, accessToken);
 
-    weibo.GET('users/show',{uid:'1564554685'}, function (err, response, resultsInJson) {
+    weibo.GET('users/show',{uid:'1564554685'}, function (err, resultInJson, response) {
         if (err) return callback(err);
-        // do something with resultsInJson
+        // do something with resultInJson
 
     });
 
@@ -32,9 +32,9 @@ Upload in node-sina-weibo is special, a files object is separated from the param
 文件上传的情况在比较特殊，params参数对象分离出了一个files参数
 
     weibo.UPLOAD('statuses/upload',
-        { status:'your content' }, { pic:'pathToYourPicture' }, function (err, response, resultsInJson) {
+        { status:'your content' }, { pic:'pathToYourPicture' }, function (err, resultInJson, response) {
             if (err) return callback(err);
-            // do something with resultsInJson
+            // do something with resultInJson
         }
     );
 

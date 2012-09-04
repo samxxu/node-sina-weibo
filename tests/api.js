@@ -16,13 +16,13 @@ describe("Class SinaWeibo", function () {
 
     describe('#users$show()', function () {
         it('should return a user info', function (done) {
-            weibo.GET('users/show', { uid:'1564554685' }, function (err, response, results) {
+            weibo.GET('users/show', { uid:'1564554685' }, function (err, result, response) {
                 if (err) {
                     console.error(err);
                     return done(err);
                 }
 
-                console.log(util.inspect(results));
+                console.log(util.inspect(result));
                 done();
             });
         });
@@ -32,7 +32,7 @@ describe("Class SinaWeibo", function () {
 //        it('should upload a weibo with pic', function (done) {
 //            weibo.UPLOAD('statuses/upload',
 //                { status:'test test' + Math.random() }, { pic:'fixture/3444972239962243715.jpg' },
-//                function (err, response, results) {
+//                function (err, result, response) {
 //                    if (err) {
 //                        console.error(err);
 //                        return done(err);

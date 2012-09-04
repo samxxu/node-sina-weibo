@@ -1,7 +1,7 @@
 {
     "name":"node-sina-weibo",
     "description":"Sina Weibo API client for node.js",
-    "version":"0.0.1",
+    "version":"0.0.2",
     "author":"Sam X. Xu <samxxu@gmail.com> Weibo:@VM-SAM",
     "main":"./lib/index",
     "keywords":[

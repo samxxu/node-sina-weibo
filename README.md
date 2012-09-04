@@ -23,7 +23,6 @@ If you want some more graceful and comfortable APIs, like: weibo.getUserDetail()
     weibo.GET('users/show',{uid:'1564554685'}, function (err, resultInJson, response) {
         if (err) return callback(err);
         // do something with resultInJson
-
     });
 
 ## Example 2: The SPECIAL api - Upload

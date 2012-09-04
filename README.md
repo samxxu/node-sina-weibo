@@ -5,7 +5,7 @@ Without any wrapper APIs, it's like a mirror to the server side APIs. All you ne
 If you want some more graceful and comfortable APIs, like: weibo.getUserDetail(), weibo.update() and etc, you can wrap it with your own Class.
 
 
-### Introduction in Chinese
+## Introduction in Chinese
 
 这是一个简单的基于OAuth2的[node.js](http://nodejs.org)新浪微博API客户端。
 

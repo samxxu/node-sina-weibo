@@ -9,7 +9,7 @@ If you want some more graceful and comfortable APIs, like: weibo.getUserDetail()
 
 这是一个简单的基于OAuth2的[node.js](http://nodejs.org)新浪微博API客户端。
 
-它定位于一个底层SDK以保持其调用的灵活性及接口的稳定性。
+它定位于一个底层SDK，以保持其调用的灵活性及接口的稳定性。
 
 它像是一个服务器端API的镜像，没有对接口进行自己的封装，你只需要阅读 [新浪微博的API](http://open.weibo.com/wiki/API%E6%96%87%E6%A1%A3_V2)，并参考下面的例子便可成功调用。
 

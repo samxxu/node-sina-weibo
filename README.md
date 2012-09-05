@@ -15,6 +15,7 @@ If you want some more graceful and comfortable APIs, like: weibo.getUserDetail()
 
 如果你想要用更为优雅的接口，例如：weibo.getUserDetail(), weibo.update() 等等，你可以自己封装一些你要用的API到你自己的Wrapper类中。
 
+欢迎在微博上与我沟通[@VM-SAM](http://weibo.com/pandasam)
 
 ## Example
 
@@ -37,7 +38,38 @@ Upload in node-sina-weibo is special, a files object is separated from the param
         }
     );
 
-## Installation
+## A Typical Authorization Example
+
+Please refer to [Sina Weibo Authorization Documentation](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
+
+请参阅[新浪微博授权机制说明](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
+
+### Step 1 : Get the Authorize Url
+
+    var weibo = new SinaWeibo(clientId, clientSecret);
+
+    var url = weibo.getAuthorizeUrl({
+        redirect_uri:'http://your-website.com/callback',
+        response_type:'code'
+    });
+
+A code will be provided to the http://your-website.com/callback?code=the-code-you-get.
+
+### Step 2 : Get the Access Token with the code got in step 1
+
+    weibo.getAccessToken({
+            code:'77b0ac5b52a85fb898821a805ee6de2d',
+            grant_type:'authorization_code',
+            redirect_uri:'http://your-website.com/callback'
+        }, function (err, result, accessToken) {
+            if (err) return callback(err);
+            // your code here.
+            // weibo.GET(...)
+        }
+    );
+
+
+##Installation
 
     $ npm install node-sina-weibo
 

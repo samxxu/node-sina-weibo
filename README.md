@@ -40,7 +40,7 @@ Upload in node-sina-weibo is special, a files object is separated from the param
 
 ## A Typical Authorization Example
 
-Please refer to [Sina Weibo Authorization Documentation](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
+For more details, please refer to [Sina Weibo Authorization Documentation](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
 
 请参阅[新浪微博授权机制说明](http://open.weibo.com/wiki/%E6%8E%88%E6%9D%83%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E)
 
@@ -58,7 +58,7 @@ A code will be provided to the http://your-website.com/callback?code=the-code-yo
 ### Step 2 : Get the Access Token with the code got in step 1
 
     weibo.getAccessToken({
-            code:'77b0ac5b52a85fb898821a805ee6de2d',
+            code:'the-code-got-in-step-1',
             grant_type:'authorization_code',
             redirect_uri:'http://your-website.com/callback'
         }, function (err, result, accessToken) {

@@ -29,7 +29,7 @@ describe("Class SinaWeibo", function () {
     describe('#getAccessToken()', function () {
         it('should return a valid AccessToken', function (done) {
             weibo.getAccessToken({
-                    code:'77b0ac5b52a85fb898821a805ee6de2d',
+                    code:'ab38ee9762d9246c16d9ea1cb982b521',
                     grant_type:'authorization_code',
                     redirect_uri:'http://runmyjs.com/callback'
                 }, function (err, results, accessToken) {

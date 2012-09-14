@@ -29,15 +29,15 @@ describe("Class SinaWeibo", function () {
     describe('#getAccessToken()', function () {
         it('should return a valid AccessToken', function (done) {
             weibo.getAccessToken({
-                    code:'ab38ee9762d9246c16d9ea1cb982b521',
+                    code:'91521da3dc5ca63b3dc45e8b6d21bdc9', // put here your authorize code which is got above via browser
                     grant_type:'authorization_code',
                     redirect_uri:'http://runmyjs.com/callback'
                 }, function (err, results, accessToken) {
                     if (err) {
-                        console.error(err);
+                        console.log(err.stack);
                         return done(err);
                     }
-                    console.log('accessToken:' + accessToken);
+                    console.log('We have got an accessToken: ' + accessToken);
                     accessToken.length.should.be.above(10);
                     accessToken.should.equal(weibo._accessToken);
                     done();
@@ -50,6 +50,9 @@ describe("Class SinaWeibo", function () {
         it('should be able to call APIs', function (done) {
             weibo.GET('users/show', { uid:'1564554685' }, function (err, result, response) {
                 if (err) {
+//                    console.log('' + err.stack);
+//                    err.
+
                     console.error(err);
                     return done(err);
                 }
